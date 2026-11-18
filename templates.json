@@ -1,0 +1,4187 @@
+{
+  "version": 2,
+  "updated": 1731000000000,
+  "categories": [
+    {
+      "id": "daily",
+      "name": "日常提醒",
+      "icon": "sun",
+      "color": "#5874FF"
+    },
+    {
+      "id": "battery",
+      "name": "电量充电",
+      "icon": "battery",
+      "color": "#34C77B"
+    },
+    {
+      "id": "screen",
+      "name": "屏幕解锁",
+      "icon": "shield",
+      "color": "#FF8A80"
+    },
+    {
+      "id": "gesture",
+      "name": "摇一摇手势",
+      "icon": "bolt",
+      "color": "#FFB020"
+    },
+    {
+      "id": "network",
+      "name": "网络",
+      "icon": "wifi",
+      "color": "#58B4FF"
+    },
+    {
+      "id": "app",
+      "name": "应用",
+      "icon": "grid",
+      "color": "#A078FF"
+    },
+    {
+      "id": "notify",
+      "name": "通知",
+      "icon": "list",
+      "color": "#FFB020"
+    },
+    {
+      "id": "ui",
+      "name": "界面自动化",
+      "icon": "gear",
+      "color": "#34C77B"
+    },
+    {
+      "id": "flow",
+      "name": "变量控制流",
+      "icon": "sliders",
+      "color": "#FF78B4"
+    },
+    {
+      "id": "data",
+      "name": "网络数据",
+      "icon": "save",
+      "color": "#5874FF"
+    },
+    {
+      "id": "call",
+      "name": "通话短信",
+      "icon": "phone",
+      "color": "#00C4A7"
+    },
+    {
+      "id": "media",
+      "name": "影音媒体",
+      "icon": "music",
+      "color": "#FF6B9D"
+    },
+    {
+      "id": "location",
+      "name": "位置出行",
+      "icon": "pin",
+      "color": "#FF9F43"
+    },
+    {
+      "id": "system",
+      "name": "系统设置",
+      "icon": "gear",
+      "color": "#7C8498"
+    },
+    {
+      "id": "device",
+      "name": "传感器硬件",
+      "icon": "sensor",
+      "color": "#5B8DEF"
+    },
+    {
+      "id": "security",
+      "name": "安全防护",
+      "icon": "shield",
+      "color": "#EE5A6F"
+    }
+  ],
+  "templates": [
+    {
+      "id": "daily_morning",
+      "name": "每日早安提醒",
+      "category": "daily",
+      "desc": "每天 8:00 弹通知并振动，提醒你开始新的一天",
+      "author": "官方",
+      "stars": 328,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 8,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "早上好",
+          "text2": "新的一天开始了"
+        },
+        {
+          "type": "vibrate",
+          "a": 300
+        }
+      ]
+    },
+    {
+      "id": "daily_sleep",
+      "name": "睡前勿扰",
+      "category": "daily",
+      "desc": "每天 23:00 开启免打扰并语音道晚安",
+      "author": "官方",
+      "stars": 256,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 23,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "dnd_toggle",
+          "text": "on"
+        },
+        {
+          "type": "say",
+          "text": "该休息了，晚安"
+        }
+      ]
+    },
+    {
+      "id": "daily_hourly",
+      "name": "整点报时",
+      "category": "daily",
+      "desc": "每隔 60 分钟语音朗读当前时间",
+      "author": "官方",
+      "stars": 189,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_interval",
+        "params": {
+          "minutes": 60
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "speak_time"
+        }
+      ]
+    },
+    {
+      "id": "daily_water",
+      "name": "喝水提醒",
+      "category": "daily",
+      "desc": "每 45 分钟提醒喝水，轻振动提示",
+      "author": "社区",
+      "stars": 412,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_interval",
+        "params": {
+          "minutes": 45
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "该喝水了"
+        },
+        {
+          "type": "vibrate",
+          "a": 200
+        }
+      ]
+    },
+    {
+      "id": "daily_standup",
+      "name": "久坐提醒",
+      "category": "daily",
+      "desc": "每 90 分钟提醒起身活动一下",
+      "author": "社区",
+      "stars": 167,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_interval",
+        "params": {
+          "minutes": 90
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "该活动了",
+          "text2": "站起来走动一下"
+        }
+      ]
+    },
+    {
+      "id": "daily_lunch",
+      "name": "午饭提醒",
+      "category": "daily",
+      "desc": "每天 11:50 提醒订餐或吃饭",
+      "author": "社区",
+      "stars": 203,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 11,
+          "minute": 50
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "午餐时间",
+          "text2": "记得吃饭，别饿着"
+        }
+      ]
+    },
+    {
+      "id": "daily_home_work",
+      "name": "下班提醒",
+      "category": "daily",
+      "desc": "工作日 18:00 提醒下班，周六日不提醒",
+      "author": "官方",
+      "stars": 289,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 18,
+          "minute": 0
+        }
+      },
+      "constraints": [
+        {
+          "type": "day_of_week",
+          "text": "1,2,3,4,5"
+        }
+      ],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "下班时间到",
+          "text2": "今天辛苦了"
+        }
+      ]
+    },
+    {
+      "id": "daily_weekly_report",
+      "name": "周五周报提醒",
+      "category": "daily",
+      "desc": "每周五 17:00 提醒提交周报",
+      "author": "官方",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "day_of_week",
+        "params": {
+          "days": 5,
+          "hour": 17,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "记得交周报",
+          "text2": "周五到了，别忘了周报"
+        }
+      ]
+    },
+    {
+      "id": "daily_monthly",
+      "name": "每月1号提醒",
+      "category": "daily",
+      "desc": "每月 1 号提醒查看账单、续费会员",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "day_of_month",
+        "params": {
+          "day": 1,
+          "hour": 9,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "月初提醒",
+          "text2": "检查账单与会员续费"
+        }
+      ]
+    },
+    {
+      "id": "daily_weekend_wake",
+      "name": "周末晚起",
+      "category": "daily",
+      "desc": "周六日 9:30 才提醒，工作日不打扰",
+      "author": "社区",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 9,
+          "minute": 30
+        }
+      },
+      "constraints": [
+        {
+          "type": "day_of_week",
+          "text": "6,0"
+        }
+      ],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "周末愉快",
+          "text2": "睡得香吗？"
+        }
+      ]
+    },
+    {
+      "id": "daily_night_low",
+      "name": "夜间护眼",
+      "category": "daily",
+      "desc": "22:00 后降低屏幕亮度到 30%",
+      "author": "官方",
+      "stars": 334,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 22,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 30
+        },
+        {
+          "type": "notify",
+          "text": "夜间模式",
+          "text2": "已降低亮度保护眼睛"
+        }
+      ]
+    },
+    {
+      "id": "daily_meditate",
+      "name": "深呼吸提醒",
+      "category": "daily",
+      "desc": "每 2 小时提醒深呼吸放松一次",
+      "author": "社区",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_interval",
+        "params": {
+          "minutes": 120
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "深呼吸，放松一下"
+        },
+        {
+          "type": "vibrate",
+          "a": 150
+        }
+      ]
+    },
+    {
+      "id": "daily_sunrise",
+      "name": "日出提醒",
+      "category": "daily",
+      "desc": "日出时刻语音播报，感受自然节律",
+      "author": "官方",
+      "stars": 88,
+      "lang": "zh",
+      "trigger": {
+        "type": "sunrise_sunset",
+        "params": {
+          "event": "sunrise"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "say",
+          "text": "太阳升起了，早安"
+        },
+        {
+          "type": "notify",
+          "text": "日出",
+          "text2": "新的一天开始"
+        }
+      ]
+    },
+    {
+      "id": "daily_sunset",
+      "name": "日落提醒",
+      "category": "daily",
+      "desc": "日落时刻提醒准备休息、调暗灯光",
+      "author": "官方",
+      "stars": 94,
+      "lang": "zh",
+      "trigger": {
+        "type": "sunrise_sunset",
+        "params": {
+          "event": "sunset"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "日落了",
+          "text2": "天黑了，准备休息吧"
+        }
+      ]
+    },
+    {
+      "id": "daily_boot",
+      "name": "开机自启通知",
+      "category": "daily",
+      "desc": "手机开机后发通知，提醒核心服务已恢复",
+      "author": "官方",
+      "stars": 156,
+      "lang": "zh",
+      "trigger": {
+        "type": "boot",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "已开机",
+          "text2": "自动化服务已恢复运行"
+        }
+      ]
+    },
+    {
+      "id": "daily_date_change",
+      "name": "跨日提醒",
+      "category": "daily",
+      "desc": "日期变化（过了零点）时记录新的一天",
+      "author": "官方",
+      "stars": 64,
+      "lang": "zh",
+      "trigger": {
+        "type": "date_changed",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "新的一天",
+          "text2": "{date} 开始了"
+        },
+        {
+          "type": "log",
+          "text": "跨日: {datetime}"
+        }
+      ]
+    },
+    {
+      "id": "battery_charge",
+      "name": "充电时提示",
+      "category": "battery",
+      "desc": "插上电源时弹提示并振动，确认已开始充电",
+      "author": "官方",
+      "stars": 543,
+      "lang": "zh",
+      "trigger": {
+        "type": "power_charge",
+        "params": {
+          "onCharge": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "已开始充电"
+        },
+        {
+          "type": "vibrate",
+          "a": 200
+        }
+      ]
+    },
+    {
+      "id": "battery_unplug",
+      "name": "拔掉充电器提醒",
+      "category": "battery",
+      "desc": "拔掉电源时提示，提醒已停止充电",
+      "author": "官方",
+      "stars": 287,
+      "lang": "zh",
+      "trigger": {
+        "type": "power_charge",
+        "params": {
+          "onCharge": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "已断开充电"
+        },
+        {
+          "type": "log",
+          "text": "拔线，电量 {battery}%"
+        }
+      ]
+    },
+    {
+      "id": "battery_full",
+      "name": "充满电提醒",
+      "category": "battery",
+      "desc": "电量达 100% 时提醒拔掉充电器，保护电池寿命",
+      "author": "官方",
+      "stars": 478,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 100,
+          "below": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "已充满",
+          "text2": "记得拔掉充电器，保护电池"
+        }
+      ]
+    },
+    {
+      "id": "battery_low_save",
+      "name": "低电量省电",
+      "category": "battery",
+      "desc": "电量降到 20% 时自动降低亮度并关闭 WiFi",
+      "author": "官方",
+      "stars": 621,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 20,
+          "below": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 30
+        },
+        {
+          "type": "wifi_toggle",
+          "text": "off"
+        },
+        {
+          "type": "notify",
+          "text": "电量偏低",
+          "text2": "已降低亮度并关闭 WiFi"
+        }
+      ]
+    },
+    {
+      "id": "battery_speak",
+      "name": "电量播报",
+      "category": "battery",
+      "desc": "电量达 50% 时语音播报当前电量",
+      "author": "社区",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 50,
+          "below": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "say",
+          "text": "当前电量百分之 {battery}"
+        }
+      ]
+    },
+    {
+      "id": "battery_saver_on",
+      "name": "低电开省电模式",
+      "category": "battery",
+      "desc": "电量低于 15% 时提示开启系统省电模式",
+      "author": "社区",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 15,
+          "below": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "电量告急",
+          "text2": "建议开启系统省电模式"
+        }
+      ]
+    },
+    {
+      "id": "battery_critical",
+      "name": "极低电紧急提示",
+      "category": "battery",
+      "desc": "电量低于 5% 时强振动警告并提示充电",
+      "author": "官方",
+      "stars": 167,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 5,
+          "below": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "vibrate_pattern",
+          "text": "200,100,200,100,200"
+        },
+        {
+          "type": "notify",
+          "text": "电量极低",
+          "text2": "请立即充电！"
+        }
+      ]
+    },
+    {
+      "id": "battery_temp_high",
+      "name": "电池过热提醒",
+      "category": "battery",
+      "desc": "电池温度超过 42℃ 时提示停止使用",
+      "author": "官方",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_temp",
+        "params": {
+          "celsius": 42
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "电池过热",
+          "text2": "温度过高，建议暂停使用"
+        },
+        {
+          "type": "vibrate",
+          "a": 400
+        }
+      ]
+    },
+    {
+      "id": "battery_30",
+      "name": "电量30%提醒",
+      "category": "battery",
+      "desc": "电量降到 30% 时提醒找充电器",
+      "author": "社区",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 30,
+          "below": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "电量 30%，该充电了"
+        }
+      ]
+    },
+    {
+      "id": "battery_charging_slow",
+      "name": "充电提醒勿玩手机",
+      "category": "battery",
+      "desc": "正在充电且电量低于 50% 时提示别玩手机",
+      "author": "官方",
+      "stars": 89,
+      "lang": "zh",
+      "trigger": {
+        "type": "power_charge",
+        "params": {
+          "onCharge": true
+        }
+      },
+      "constraints": [
+        {
+          "type": "battery_below",
+          "a": 50
+        }
+      ],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "开始充电",
+          "text2": "充电中少玩手机，充得更快"
+        }
+      ]
+    },
+    {
+      "id": "battery_charger_night",
+      "name": "夜间充电静音",
+      "category": "battery",
+      "desc": "晚上 23 点后接电源时静音振动通知",
+      "author": "社区",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "power_charge",
+        "params": {
+          "onCharge": true
+        }
+      },
+      "constraints": [
+        {
+          "type": "time_range",
+          "text": "23:00-07:00"
+        }
+      ],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "夜间充电",
+          "text2": "已开始静音充电"
+        },
+        {
+          "type": "volume_ringer",
+          "a": 0
+        }
+      ]
+    },
+    {
+      "id": "battery_saver_off",
+      "name": "充满后关省电",
+      "category": "battery",
+      "desc": "电量达 80% 时提示可以关闭省电模式",
+      "author": "社区",
+      "stars": 67,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 80,
+          "below": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "电量充足，可关闭省电模式"
+        }
+      ]
+    },
+    {
+      "id": "battery_daily_report",
+      "name": "电量日报",
+      "category": "battery",
+      "desc": "每天 21:00 记录当前电量到日志",
+      "author": "官方",
+      "stars": 54,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 21,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "今日 21 点电量: {battery}%"
+        }
+      ]
+    },
+    {
+      "id": "battery_low_dnd",
+      "name": "极低电开免打扰",
+      "category": "battery",
+      "desc": "电量低于 10% 时开启免打扰省电",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "battery_level",
+        "params": {
+          "level": 10,
+          "below": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "dnd_toggle",
+          "text": "on"
+        },
+        {
+          "type": "notify",
+          "text": "省电模式",
+          "text2": "电量极低，已开免打扰"
+        }
+      ]
+    },
+    {
+      "id": "screen_wechat",
+      "name": "解锁后打开微信",
+      "category": "screen",
+      "desc": "解锁设备时自动打开微信（可改包名）",
+      "author": "社区",
+      "stars": 287,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_unlock",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "launch_app",
+          "text": "com.tencent.mm",
+          "c": 800
+        }
+      ]
+    },
+    {
+      "id": "screen_lock_off",
+      "name": "熄屏后锁定",
+      "category": "screen",
+      "desc": "屏幕熄灭时立即锁定设备",
+      "author": "官方",
+      "stars": 201,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_off",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "screen_lock"
+        }
+      ]
+    },
+    {
+      "id": "screen_off_wifi",
+      "name": "熄屏断开 WiFi",
+      "category": "screen",
+      "desc": "屏幕熄灭时关闭 WiFi 省电",
+      "author": "社区",
+      "stars": 176,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_off",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "wifi_toggle",
+          "text": "off"
+        }
+      ]
+    },
+    {
+      "id": "screen_off_volume",
+      "name": "熄屏降低音量",
+      "category": "screen",
+      "desc": "屏幕熄灭时把媒体音量降到 3",
+      "author": "社区",
+      "stars": 143,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_off",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume",
+          "b": 3
+        }
+      ]
+    },
+    {
+      "id": "screen_on_notify",
+      "name": "亮屏提示",
+      "category": "screen",
+      "desc": "屏幕点亮时轻振动并显示时间",
+      "author": "官方",
+      "stars": 156,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_on",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "现在 {time}"
+        },
+        {
+          "type": "vibrate",
+          "a": 80
+        }
+      ]
+    },
+    {
+      "id": "screen_unlock_music",
+      "name": "解锁播放音乐",
+      "category": "screen",
+      "desc": "解锁设备时继续播放音乐",
+      "author": "官方",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_unlock",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_play"
+        }
+      ]
+    },
+    {
+      "id": "screen_off_music",
+      "name": "熄屏暂停音乐",
+      "category": "screen",
+      "desc": "屏幕熄灭时暂停媒体播放",
+      "author": "社区",
+      "stars": 178,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_off",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_pause"
+        }
+      ]
+    },
+    {
+      "id": "screen_rotate_log",
+      "name": "旋转屏幕记录",
+      "category": "screen",
+      "desc": "屏幕旋转时记录方向到日志",
+      "author": "官方",
+      "stars": 43,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_orient",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "屏幕旋转: {orientation}"
+        }
+      ]
+    },
+    {
+      "id": "screen_lock_dnd",
+      "name": "锁定后开勿扰",
+      "category": "screen",
+      "desc": "屏幕锁定后进入免打扰模式",
+      "author": "社区",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_lock",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "dnd_toggle",
+          "text": "on"
+        }
+      ]
+    },
+    {
+      "id": "screen_unlock_dnd_off",
+      "name": "解锁关勿扰",
+      "category": "screen",
+      "desc": "解锁设备时关闭免打扰",
+      "author": "官方",
+      "stars": 121,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_unlock",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "dnd_toggle",
+          "text": "off"
+        }
+      ]
+    },
+    {
+      "id": "screen_unlock_bright",
+      "name": "解锁恢复亮度",
+      "category": "screen",
+      "desc": "解锁设备后把亮度恢复到 70%",
+      "author": "社区",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_unlock",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 70
+        }
+      ]
+    },
+    {
+      "id": "screen_off_airplane",
+      "name": "夜间熄屏飞行模式",
+      "category": "screen",
+      "desc": "23 点后熄屏时开启飞行模式",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_off",
+        "params": {}
+      },
+      "constraints": [
+        {
+          "type": "time_range",
+          "text": "23:00-06:00"
+        }
+      ],
+      "actions": [
+        {
+          "type": "airplane",
+          "text": "on"
+        }
+      ]
+    },
+    {
+      "id": "screen_screenshot",
+      "name": "截图后提示",
+      "category": "screen",
+      "desc": "截屏后弹出提示并记录时间",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "screenshot_taken",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "已截图"
+        },
+        {
+          "type": "log",
+          "text": "截图 {datetime}"
+        }
+      ]
+    },
+    {
+      "id": "screen_keyguard",
+      "name": "锁屏状态记录",
+      "category": "screen",
+      "desc": "锁屏/解锁状态变化时写入日志",
+      "author": "官方",
+      "stars": 41,
+      "lang": "zh",
+      "trigger": {
+        "type": "keyguard_state",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "锁屏状态: {keyguard}"
+        }
+      ]
+    },
+    {
+      "id": "gesture_torch",
+      "name": "摇一摇开手电筒",
+      "category": "gesture",
+      "desc": "摇动手机切换手电筒开关",
+      "author": "官方",
+      "stars": 689,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 5
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "torch_toggle"
+        }
+      ]
+    },
+    {
+      "id": "gesture_screenshot",
+      "name": "摇一摇截图",
+      "category": "gesture",
+      "desc": "摇动手机自动截图并保存",
+      "author": "社区",
+      "stars": 432,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 5
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ui_screenshot",
+          "text2": "shot"
+        },
+        {
+          "type": "toast",
+          "text": "已截图"
+        }
+      ]
+    },
+    {
+      "id": "gesture_flip_mute",
+      "name": "翻转静音",
+      "category": "gesture",
+      "desc": "把手机翻过来（屏幕朝下）时切换静音",
+      "author": "社区",
+      "stars": 298,
+      "lang": "zh",
+      "trigger": {
+        "type": "flip_device",
+        "params": {
+          "faceDown": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume_ringer",
+          "a": 0
+        }
+      ]
+    },
+    {
+      "id": "gesture_flip_unmute",
+      "name": "翻回取消静音",
+      "category": "gesture",
+      "desc": "把手机翻回正面时恢复铃声",
+      "author": "官方",
+      "stars": 187,
+      "lang": "zh",
+      "trigger": {
+        "type": "flip_device",
+        "params": {
+          "faceDown": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume_ringer",
+          "a": 2
+        }
+      ]
+    },
+    {
+      "id": "gesture_shake_home",
+      "name": "摇一摇回桌面",
+      "category": "gesture",
+      "desc": "摇动手机快速回到主屏幕",
+      "author": "社区",
+      "stars": 234,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 6
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "home"
+        }
+      ]
+    },
+    {
+      "id": "gesture_shake_back",
+      "name": "摇一摇返回",
+      "category": "gesture",
+      "desc": "摇动手机执行返回操作",
+      "author": "社区",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 6
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "back"
+        }
+      ]
+    },
+    {
+      "id": "gesture_shake_volume",
+      "name": "摇一摇静音",
+      "category": "gesture",
+      "desc": "摇动手机把媒体音量降到 0",
+      "author": "官方",
+      "stars": 178,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 5
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume_mute"
+        },
+        {
+          "type": "toast",
+          "text": "已静音"
+        }
+      ]
+    },
+    {
+      "id": "gesture_pickup_torch",
+      "name": "拿起点亮手电",
+      "category": "gesture",
+      "desc": "拿起手机时短暂点亮手电筒照明",
+      "author": "社区",
+      "stars": 156,
+      "lang": "zh",
+      "trigger": {
+        "type": "device_pickup",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "torch_toggle"
+        },
+        {
+          "type": "wait",
+          "a": 3000
+        },
+        {
+          "type": "torch_toggle"
+        }
+      ]
+    },
+    {
+      "id": "gesture_double_power",
+      "name": "双击电源键",
+      "category": "gesture",
+      "desc": "双击电源键快速打开相机",
+      "author": "官方",
+      "stars": 267,
+      "lang": "zh",
+      "trigger": {
+        "type": "power_double",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "launch_app",
+          "text": "com.android.camera"
+        }
+      ]
+    },
+    {
+      "id": "gesture_long_power",
+      "name": "长按电源键",
+      "category": "gesture",
+      "desc": "长按电源键执行自定义操作",
+      "author": "官方",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "long_press_power",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "长按电源键"
+        }
+      ]
+    },
+    {
+      "id": "gesture_volume_long",
+      "name": "长按音量键",
+      "category": "gesture",
+      "desc": "长按音量下键快速静音",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "volume_long",
+        "params": {
+          "key": "down"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume_mute"
+        }
+      ]
+    },
+    {
+      "id": "gesture_shake_play",
+      "name": "摇一摇播放音乐",
+      "category": "gesture",
+      "desc": "摇动手机切换音乐播放/暂停",
+      "author": "社区",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 5
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_play_pause"
+        }
+      ]
+    },
+    {
+      "id": "gesture_home_triple",
+      "name": "三击Home键",
+      "category": "gesture",
+      "desc": "连续三次点击主屏幕键触发截图",
+      "author": "官方",
+      "stars": 67,
+      "lang": "zh",
+      "trigger": {
+        "type": "home_triple",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ui_screenshot",
+          "text2": "s"
+        }
+      ]
+    },
+    {
+      "id": "gesture_proximity_wave",
+      "name": "挥手静音来电",
+      "category": "gesture",
+      "desc": "来电时在屏幕上方挥手静音铃声",
+      "author": "社区",
+      "stars": 189,
+      "lang": "zh",
+      "trigger": {
+        "type": "proximity_wave",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume_mute"
+        }
+      ]
+    },
+    {
+      "id": "network_wifi_mute",
+      "name": "连公司WiFi静音",
+      "category": "network",
+      "desc": "连接到指定 WiFi 时切换到静音模式",
+      "author": "社区",
+      "stars": 245,
+      "lang": "zh",
+      "trigger": {
+        "type": "wifi_ssid",
+        "params": {
+          "ssid": "公司WiFi"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume_ringer",
+          "a": 1
+        }
+      ]
+    },
+    {
+      "id": "network_off_alert",
+      "name": "断网提醒",
+      "category": "network",
+      "desc": "WiFi 断开时弹出提示",
+      "author": "官方",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "wifi_connect",
+        "params": {
+          "connected": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "网络已断开"
+        }
+      ]
+    },
+    {
+      "id": "network_check",
+      "name": "定时网络检测",
+      "category": "network",
+      "desc": "每 30 分钟检测一次网络连通性并记录",
+      "author": "社区",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_interval",
+        "params": {
+          "minutes": 30
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "network_check",
+          "text": "223.5.5.5",
+          "text2": "net_ok"
+        },
+        {
+          "type": "log",
+          "text": "网络状态: {v=net_ok}"
+        }
+      ]
+    },
+    {
+      "id": "network_wifi_home",
+      "name": "连上家里WiFi",
+      "category": "network",
+      "desc": "连上家里 WiFi 时关闭移动数据",
+      "author": "官方",
+      "stars": 198,
+      "lang": "zh",
+      "trigger": {
+        "type": "wifi_ssid",
+        "params": {
+          "ssid": "我家WiFi"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "mobile_data",
+          "text": "off"
+        }
+      ]
+    },
+    {
+      "id": "network_wifi_leave",
+      "name": "离开WiFi提醒",
+      "category": "network",
+      "desc": "WiFi 断开时语音提醒切换数据网络",
+      "author": "社区",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "wifi_connect",
+        "params": {
+          "connected": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "say",
+          "text": "已离开无线网络"
+        }
+      ]
+    },
+    {
+      "id": "network_mobile_on",
+      "name": "开数据即提醒",
+      "category": "network",
+      "desc": "移动数据开启时提示流量消耗",
+      "author": "官方",
+      "stars": 67,
+      "lang": "zh",
+      "trigger": {
+        "type": "data_conn",
+        "params": {
+          "connected": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "移动数据已开启",
+          "text2": "注意流量使用"
+        }
+      ]
+    },
+    {
+      "id": "network_airplane",
+      "name": "飞行模式切换",
+      "category": "network",
+      "desc": "飞行模式变化时记录状态",
+      "author": "官方",
+      "stars": 54,
+      "lang": "zh",
+      "trigger": {
+        "type": "airplane_chg",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "飞行模式: {airplane}"
+        }
+      ]
+    },
+    {
+      "id": "network_hotspot",
+      "name": "热点开关提醒",
+      "category": "network",
+      "desc": "打开热点时提醒耗电较快",
+      "author": "官方",
+      "stars": 43,
+      "lang": "zh",
+      "trigger": {
+        "type": "hotspot",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "热点已开启",
+          "text2": "注意耗电量"
+        }
+      ]
+    },
+    {
+      "id": "network_ip_log",
+      "name": "记录IP地址",
+      "category": "network",
+      "desc": "IP 地址变化时记录到日志",
+      "author": "官方",
+      "stars": 38,
+      "lang": "zh",
+      "trigger": {
+        "type": "ip_address",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "IP 变化: {ip}"
+        }
+      ]
+    },
+    {
+      "id": "network_vpn",
+      "name": "VPN连接提醒",
+      "category": "network",
+      "desc": "VPN 连接状态变化时提示",
+      "author": "官方",
+      "stars": 45,
+      "lang": "zh",
+      "trigger": {
+        "type": "vpn_state",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "VPN 状态: {vpn}"
+        }
+      ]
+    },
+    {
+      "id": "network_roaming",
+      "name": "漫游提醒",
+      "category": "network",
+      "desc": "进入漫游状态时提醒关闭数据",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "roaming",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "漫游中",
+          "text2": "注意关闭数据避免高额费用"
+        }
+      ]
+    },
+    {
+      "id": "network_signal_weak",
+      "name": "WiFi信号弱",
+      "category": "network",
+      "desc": "WiFi 信号弱时提示切换网络",
+      "author": "官方",
+      "stars": 52,
+      "lang": "zh",
+      "trigger": {
+        "type": "wifi_signal",
+        "params": {
+          "threshold": -80,
+          "above": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "WiFi 信号较弱"
+        }
+      ]
+    },
+    {
+      "id": "app_game_dnd",
+      "name": "打开游戏免打扰",
+      "category": "app",
+      "desc": "进入游戏时自动开启免打扰",
+      "author": "社区",
+      "stars": 312,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_foreground",
+        "params": {
+          "pkg": "com.tencent.tmgp.sgame"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "dnd_toggle",
+          "text": "on"
+        }
+      ]
+    },
+    {
+      "id": "app_night_clean",
+      "name": "凌晨清理后台",
+      "category": "app",
+      "desc": "每天凌晨 3:00 强制停止微信后台",
+      "author": "社区",
+      "stars": 198,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 3,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "kill_app",
+          "text": "com.tencent.mm"
+        }
+      ]
+    },
+    {
+      "id": "app_install_notify",
+      "name": "应用变化通知",
+      "category": "app",
+      "desc": "任何应用被安装或卸载时发出通知",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_install",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "应用变化",
+          "text2": "{app_name}"
+        }
+      ]
+    },
+    {
+      "id": "app_exit_home",
+      "name": "退出应用回桌面",
+      "category": "app",
+      "desc": "退出指定应用时自动回到桌面",
+      "author": "社区",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_exit",
+        "params": {
+          "pkg": "com.tencent.mm"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "home"
+        }
+      ]
+    },
+    {
+      "id": "app_launch_bright",
+      "name": "启动应用调亮度",
+      "category": "app",
+      "desc": "打开视频应用时把亮度调到最高",
+      "author": "官方",
+      "stars": 167,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_foreground",
+        "params": {
+          "pkg": "com.tencent.qqlive"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 100
+        }
+      ]
+    },
+    {
+      "id": "app_installed_list",
+      "name": "统计应用数量",
+      "category": "app",
+      "desc": "手动统计设备上已安装应用数量",
+      "author": "官方",
+      "stars": 34,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "app_installed_list",
+          "text2": "cnt"
+        },
+        {
+          "type": "toast",
+          "text": "已安装 {v=cnt} 个应用"
+        }
+      ]
+    },
+    {
+      "id": "app_crash_log",
+      "name": "记录应用崩溃",
+      "category": "app",
+      "desc": "应用崩溃时记录到日志",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_crash",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "崩溃: {app_name}"
+        }
+      ]
+    },
+    {
+      "id": "app_update_notice",
+      "name": "应用更新提醒",
+      "category": "app",
+      "desc": "应用更新时提示",
+      "author": "官方",
+      "stars": 56,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_update",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "应用已更新: {app_name}"
+        }
+      ]
+    },
+    {
+      "id": "app_uninstall_notice",
+      "name": "应用卸载提醒",
+      "category": "app",
+      "desc": "应用被卸载时提示",
+      "author": "官方",
+      "stars": 48,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_uninstall",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "已卸载: {app_name}"
+        }
+      ]
+    },
+    {
+      "id": "app_open_qr",
+      "name": "打开扫码应用",
+      "category": "app",
+      "desc": "手动触发打开扫码",
+      "author": "官方",
+      "stars": 39,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "launch_app",
+          "text": "com.tencent.mm"
+        }
+      ]
+    },
+    {
+      "id": "app_force_stop",
+      "name": "手动强停应用",
+      "category": "app",
+      "desc": "手动触发强制停止指定应用",
+      "author": "官方",
+      "stars": 42,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "app_force_stop",
+          "text": "com.tencent.mm"
+        }
+      ]
+    },
+    {
+      "id": "app_info_show",
+      "name": "查看应用信息",
+      "category": "app",
+      "desc": "打开指定应用的系统信息页",
+      "author": "官方",
+      "stars": 31,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "app_info",
+          "text": "com.tencent.mm"
+        }
+      ]
+    },
+    {
+      "id": "notify_wechat",
+      "name": "微信消息记录",
+      "category": "notify",
+      "desc": "收到微信通知时轻振动并记录内容",
+      "author": "社区",
+      "stars": 267,
+      "lang": "zh",
+      "trigger": {
+        "type": "notification",
+        "params": {
+          "pkg": "com.tencent.mm"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "vibrate",
+          "a": 150
+        },
+        {
+          "type": "log",
+          "text": "微信: {not_title} - {notification}"
+        }
+      ]
+    },
+    {
+      "id": "notify_sms_log",
+      "name": "短信自动记录",
+      "category": "notify",
+      "desc": "收到短信时把内容追加写入文件",
+      "author": "社区",
+      "stars": 154,
+      "lang": "zh",
+      "trigger": {
+        "type": "sms_received",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "file_write_append",
+          "text": "/sdcard/dsh_sms.txt",
+          "text2": "{datetime} {sms_number}: {sms_message}\n"
+        }
+      ]
+    },
+    {
+      "id": "notify_clear",
+      "name": "定时清理通知",
+      "category": "notify",
+      "desc": "每天 7:00 清理所有通知",
+      "author": "官方",
+      "stars": 213,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 7,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify_clear"
+        }
+      ]
+    },
+    {
+      "id": "notify_qq",
+      "name": "QQ消息提示",
+      "category": "notify",
+      "desc": "收到 QQ 通知时轻振动",
+      "author": "社区",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "notification",
+        "params": {
+          "pkg": "com.tencent.mobileqq"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "vibrate",
+          "a": 150
+        }
+      ]
+    },
+    {
+      "id": "notify_alipay",
+      "name": "支付宝到账提示",
+      "category": "notify",
+      "desc": "收到支付宝通知时语音播报",
+      "author": "官方",
+      "stars": 187,
+      "lang": "zh",
+      "trigger": {
+        "type": "notification",
+        "params": {
+          "pkg": "com.eg.android.AlipayGphone"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "say",
+          "text": "支付宝有新消息"
+        }
+      ]
+    },
+    {
+      "id": "notify_mail",
+      "name": "邮件提醒",
+      "category": "notify",
+      "desc": "收到邮件时发通知提醒",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "notification",
+        "params": {
+          "pkg": "com.android.email"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "新邮件",
+          "text2": "{not_title}"
+        }
+      ]
+    },
+    {
+      "id": "notify_removed",
+      "name": "通知被移除记录",
+      "category": "notify",
+      "desc": "通知被清除时记录到日志",
+      "author": "官方",
+      "stars": 34,
+      "lang": "zh",
+      "trigger": {
+        "type": "notification_removed",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "通知移除: {not_title}"
+        }
+      ]
+    },
+    {
+      "id": "notify_summary",
+      "name": "通知摘要",
+      "category": "notify",
+      "desc": "通知摘要变化时轻提示",
+      "author": "官方",
+      "stars": 28,
+      "lang": "zh",
+      "trigger": {
+        "type": "notify_summary",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "vibrate",
+          "a": 100
+        }
+      ]
+    },
+    {
+      "id": "notify_sms_reply",
+      "name": "短信自动回复",
+      "category": "notify",
+      "desc": "收到指定短信时自动回复",
+      "author": "社区",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "sms_received",
+        "params": {
+          "number": "10086"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "sms_send",
+          "text": "10086",
+          "text2": "已收到"
+        }
+      ]
+    },
+    {
+      "id": "notify_group",
+      "name": "应用通知分组记录",
+      "category": "notify",
+      "desc": "通知分组变化时记录",
+      "author": "官方",
+      "stars": 26,
+      "lang": "zh",
+      "trigger": {
+        "type": "notify_group",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "通知分组: {not_title}"
+        }
+      ]
+    },
+    {
+      "id": "ui_notify_panel",
+      "name": "下拉通知栏演示",
+      "category": "ui",
+      "desc": "手动触发展开通知栏，等待后自动返回",
+      "author": "官方",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notification"
+        },
+        {
+          "type": "wait",
+          "a": 1200
+        },
+        {
+          "type": "back"
+        }
+      ]
+    },
+    {
+      "id": "ui_skip_ad",
+      "name": "自动点击跳过广告",
+      "category": "ui",
+      "desc": "屏幕出现「跳过」文字时自动点击",
+      "author": "社区",
+      "stars": 856,
+      "lang": "zh",
+      "trigger": {
+        "type": "ui_text",
+        "params": {
+          "text": "跳过"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "find_click",
+          "text": "跳过",
+          "c": 2000
+        }
+      ]
+    },
+    {
+      "id": "ui_read_screen",
+      "name": "读取屏幕文字",
+      "category": "ui",
+      "desc": "手动读取当前屏幕全部文字并存入变量",
+      "author": "官方",
+      "stars": 143,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ui_read_text",
+          "text2": "screen_text"
+        },
+        {
+          "type": "toast",
+          "text": "已读取到变量 screen_text"
+        }
+      ]
+    },
+    {
+      "id": "ui_scroll_bottom",
+      "name": "摇一摇滚动到底",
+      "category": "ui",
+      "desc": "摇动手机自动把页面滚动到最底部",
+      "author": "社区",
+      "stars": 231,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 6
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ui_scroll_bottom"
+        }
+      ]
+    },
+    {
+      "id": "ui_scroll_top",
+      "name": "摇一摇回到顶部",
+      "category": "ui",
+      "desc": "摇动手机把页面滚动到顶部",
+      "author": "社区",
+      "stars": 156,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 6
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ui_scroll_top"
+        }
+      ]
+    },
+    {
+      "id": "ui_auto_confirm",
+      "name": "自动点击确认",
+      "category": "ui",
+      "desc": "屏幕出现「确定」按钮时自动点击",
+      "author": "社区",
+      "stars": 345,
+      "lang": "zh",
+      "trigger": {
+        "type": "ui_text",
+        "params": {
+          "text": "确定"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "find_click",
+          "text": "确定",
+          "c": 1500
+        }
+      ]
+    },
+    {
+      "id": "ui_back_app",
+      "name": "自动关闭应用",
+      "category": "ui",
+      "desc": "连续返回三次退出当前应用",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "back"
+        },
+        {
+          "type": "wait",
+          "a": 400
+        },
+        {
+          "type": "back"
+        },
+        {
+          "type": "wait",
+          "a": 400
+        },
+        {
+          "type": "back"
+        }
+      ]
+    },
+    {
+      "id": "ui_screenshot_save",
+      "name": "快捷截图",
+      "category": "ui",
+      "desc": "手动触发截图并提示保存位置",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ui_screenshot",
+          "text2": "p"
+        },
+        {
+          "type": "toast",
+          "text": "截图已保存"
+        }
+      ]
+    },
+    {
+      "id": "ui_swipe_up",
+      "name": "上滑手势",
+      "category": "ui",
+      "desc": "手动触发从下往上滑动屏幕",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "swipe",
+          "a": 270,
+          "b": 900,
+          "c": 270,
+          "d": 300,
+          "e": 400
+        }
+      ]
+    },
+    {
+      "id": "ui_swipe_down",
+      "name": "下滑手势",
+      "category": "ui",
+      "desc": "手动触发从上往下滑动屏幕",
+      "author": "官方",
+      "stars": 68,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "swipe",
+          "a": 270,
+          "b": 300,
+          "c": 270,
+          "d": 900,
+          "e": 400
+        }
+      ]
+    },
+    {
+      "id": "ui_double_tap",
+      "name": "双击屏幕中心",
+      "category": "ui",
+      "desc": "手动触发双击屏幕中心位置",
+      "author": "官方",
+      "stars": 54,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "double_tap",
+          "a": 270,
+          "b": 584
+        }
+      ]
+    },
+    {
+      "id": "ui_click_view",
+      "name": "按控件ID点击",
+      "category": "ui",
+      "desc": "按资源 ID 精确点击控件",
+      "author": "官方",
+      "stars": 45,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ui_click_viewid",
+          "text": "com.example:id/button"
+        }
+      ]
+    },
+    {
+      "id": "flow_counter",
+      "name": "计数器演示",
+      "category": "flow",
+      "desc": "每次运行计数器加 1，并在提示中显示当前值",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "var_inc",
+          "text": "counter",
+          "a": 1
+        },
+        {
+          "type": "toast",
+          "text": "计数: {v=counter}"
+        }
+      ]
+    },
+    {
+      "id": "flow_loop10",
+      "name": "循环10次演示",
+      "category": "flow",
+      "desc": "重复 10 次，每次把循环序号写入日志",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "var_set",
+          "text": "i",
+          "text2": "0"
+        },
+        {
+          "type": "repeat",
+          "a": 10
+        },
+        {
+          "type": "var_inc",
+          "text": "i",
+          "a": 1
+        },
+        {
+          "type": "log",
+          "text": "第 {v=i} 次"
+        },
+        {
+          "type": "end_repeat"
+        }
+      ]
+    },
+    {
+      "id": "flow_if_battery",
+      "name": "电量条件判断",
+      "category": "flow",
+      "desc": "If/Else：电量高低分别提示不同内容",
+      "author": "官方",
+      "stars": 156,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "if",
+          "text": "{battery} > 50"
+        },
+        {
+          "type": "toast",
+          "text": "电量充足: {battery}%"
+        },
+        {
+          "type": "else"
+        },
+        {
+          "type": "toast",
+          "text": "电量偏低: {battery}%"
+        },
+        {
+          "type": "end_if"
+        }
+      ]
+    },
+    {
+      "id": "flow_wait_screen",
+      "name": "等待屏幕亮起",
+      "category": "flow",
+      "desc": "最多等待 30 秒，直到屏幕点亮后继续",
+      "author": "官方",
+      "stars": 64,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "wait_until",
+          "text": "屏幕亮",
+          "c": 30000,
+          "d": 1
+        },
+        {
+          "type": "toast",
+          "text": "屏幕已亮起"
+        }
+      ]
+    },
+    {
+      "id": "flow_var_watch",
+      "name": "变量变化监听",
+      "category": "flow",
+      "desc": "变量被修改时记录新值到日志",
+      "author": "官方",
+      "stars": 45,
+      "lang": "zh",
+      "trigger": {
+        "type": "var_change",
+        "params": {
+          "name": "counter"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "变量变了: {v=counter}"
+        }
+      ]
+    },
+    {
+      "id": "flow_repeat_while",
+      "name": "条件循环",
+      "category": "flow",
+      "desc": "当计数小于 5 时持续循环",
+      "author": "官方",
+      "stars": 56,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "var_set",
+          "text": "n",
+          "text2": "0"
+        },
+        {
+          "type": "repeat_while",
+          "text": "{v=n} < 5"
+        },
+        {
+          "type": "var_inc",
+          "text": "n",
+          "a": 1
+        },
+        {
+          "type": "log",
+          "text": "n={v=n}"
+        },
+        {
+          "type": "end_repeat"
+        }
+      ]
+    },
+    {
+      "id": "flow_goto",
+      "name": "跳转演示",
+      "category": "flow",
+      "desc": "演示 Anchor 与 Goto 跳转控制",
+      "author": "官方",
+      "stars": 34,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "anchor",
+          "text": "start"
+        },
+        {
+          "type": "toast",
+          "text": "跳到这里"
+        },
+        {
+          "type": "goto",
+          "text": "end"
+        },
+        {
+          "type": "anchor",
+          "text": "end"
+        }
+      ]
+    },
+    {
+      "id": "flow_run_macro",
+      "name": "调用其他宏",
+      "category": "flow",
+      "desc": "在一个宏中调用另一个宏（示例）",
+      "author": "官方",
+      "stars": 41,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "run_rule",
+          "text": ""
+        }
+      ]
+    },
+    {
+      "id": "flow_macro_done",
+      "name": "宏完成监听",
+      "category": "flow",
+      "desc": "某个宏执行完成后触发动作",
+      "author": "官方",
+      "stars": 38,
+      "lang": "zh",
+      "trigger": {
+        "type": "macro_finished",
+        "params": {
+          "macroId": ""
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "宏已完成"
+        }
+      ]
+    },
+    {
+      "id": "flow_random",
+      "name": "随机数演示",
+      "category": "flow",
+      "desc": "生成 1-100 的随机数并提示",
+      "author": "官方",
+      "stars": 67,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "random_num",
+          "a": 1,
+          "b": 100,
+          "text2": "rnd"
+        },
+        {
+          "type": "toast",
+          "text": "随机数: {v=rnd}"
+        }
+      ]
+    },
+    {
+      "id": "flow_math",
+      "name": "数学计算",
+      "category": "flow",
+      "desc": "计算表达式的值并存入变量",
+      "author": "官方",
+      "stars": 52,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "math_expr",
+          "text": "(12+8)*3",
+          "text2": "result"
+        },
+        {
+          "type": "toast",
+          "text": "结果: {v=result}"
+        }
+      ]
+    },
+    {
+      "id": "flow_multi_vars",
+      "name": "多变量列表",
+      "category": "flow",
+      "desc": "列出所有变量当前值",
+      "author": "官方",
+      "stars": 29,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "var_list",
+          "text2": "allvars"
+        },
+        {
+          "type": "toast",
+          "text": "{v=allvars}"
+        }
+      ]
+    },
+    {
+      "id": "data_http_timer",
+      "name": "定时发送 HTTP",
+      "category": "data",
+      "desc": "每 60 分钟请求一次接口并记录响应",
+      "author": "官方",
+      "stars": 178,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_interval",
+        "params": {
+          "minutes": 60
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "http",
+          "text": "http://ip-api.com/json",
+          "c": 10000
+        },
+        {
+          "type": "log",
+          "text": "响应: {http_response}"
+        }
+      ]
+    },
+    {
+      "id": "data_backup_vars",
+      "name": "每日备份变量",
+      "category": "data",
+      "desc": "每天 2:00 把所有变量写入文件备份",
+      "author": "社区",
+      "stars": 92,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 2,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "var_list",
+          "text2": "all_vars"
+        },
+        {
+          "type": "file_write",
+          "text": "/sdcard/dsh_vars.txt",
+          "text2": "{v=all_vars}"
+        }
+      ]
+    },
+    {
+      "id": "data_json_demo",
+      "name": "JSON 解析演示",
+      "category": "data",
+      "desc": "请求接口并解析出 city 字段并提示",
+      "author": "官方",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "http_json",
+          "text": "http://ip-api.com/json",
+          "text3": "city"
+        },
+        {
+          "type": "toast",
+          "text": "当前城市: {v=city}"
+        }
+      ]
+    },
+    {
+      "id": "data_diary",
+      "name": "写日记文件",
+      "category": "data",
+      "desc": "手动往文件追加一行带时间戳的内容",
+      "author": "社区",
+      "stars": 73,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "file_write_append",
+          "text": "/sdcard/dsh_diary.txt",
+          "text2": "{datetime} 打卡\n"
+        },
+        {
+          "type": "toast",
+          "text": "已记录到日记"
+        }
+      ]
+    },
+    {
+      "id": "data_webhook",
+      "name": "Webhook 触发",
+      "category": "data",
+      "desc": "收到指定 Webhook 请求时执行动作",
+      "author": "官方",
+      "stars": 156,
+      "lang": "zh",
+      "trigger": {
+        "type": "webhook",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "收到 Webhook"
+        },
+        {
+          "type": "log",
+          "text": "Webhook: {webhook_body}"
+        }
+      ]
+    },
+    {
+      "id": "data_http_post",
+      "name": "发送 POST 请求",
+      "category": "data",
+      "desc": "手动发送带数据的 POST 请求",
+      "author": "官方",
+      "stars": 64,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "http",
+          "text": "http://httpbin.org/post",
+          "text2": "{\"a\":1}",
+          "b": 1
+        },
+        {
+          "type": "log",
+          "text": "{http_response}"
+        }
+      ]
+    },
+    {
+      "id": "data_download",
+      "name": "下载文件",
+      "category": "data",
+      "desc": "手动下载网络文件到本地",
+      "author": "官方",
+      "stars": 48,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "http_download",
+          "text": "http://example.com/file.zip",
+          "text2": "/sdcard/dsh_dl.zip"
+        }
+      ]
+    },
+    {
+      "id": "data_regex",
+      "name": "正则提取演示",
+      "category": "data",
+      "desc": "用正则从文本中提取内容",
+      "author": "官方",
+      "stars": 56,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "regex_match",
+          "text": "{clip}",
+          "text2": "\\d+",
+          "text3": "num"
+        },
+        {
+          "type": "toast",
+          "text": "提取到: {v=num}"
+        }
+      ]
+    },
+    {
+      "id": "data_hash",
+      "name": "计算哈希值",
+      "category": "data",
+      "desc": "计算文本的 MD5 哈希",
+      "author": "官方",
+      "stars": 42,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "calc_hash",
+          "text": "{clip}",
+          "text2": "md5",
+          "text3": "h"
+        },
+        {
+          "type": "toast",
+          "text": "MD5: {v=h}"
+        }
+      ]
+    },
+    {
+      "id": "data_qr_gen",
+      "name": "生成二维码",
+      "category": "data",
+      "desc": "把剪贴板内容生成二维码显示",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "qr_generate",
+          "text": "{clip}"
+        }
+      ]
+    },
+    {
+      "id": "call_auto_reject",
+      "name": "陌生号码拒接",
+      "category": "call",
+      "desc": "接到指定号码时自动拒接",
+      "author": "社区",
+      "stars": 234,
+      "lang": "zh",
+      "trigger": {
+        "type": "call_incoming",
+        "params": {
+          "number": "10086"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "call_reject"
+        }
+      ]
+    },
+    {
+      "id": "call_speaker_on",
+      "name": "接听自动开免提",
+      "category": "call",
+      "desc": "接听电话时自动打开免提",
+      "author": "官方",
+      "stars": 189,
+      "lang": "zh",
+      "trigger": {
+        "type": "call_incoming",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "call_speaker",
+          "text": "on"
+        }
+      ]
+    },
+    {
+      "id": "call_end_music",
+      "name": "挂断恢复音乐",
+      "category": "call",
+      "desc": "通话结束后继续播放音乐",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "call_ended",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_play"
+        }
+      ]
+    },
+    {
+      "id": "call_missed_notify",
+      "name": "未接来电提醒",
+      "category": "call",
+      "desc": "有未接来电时发通知提醒",
+      "author": "官方",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "call_missed",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "未接来电",
+          "text2": "{call_number}"
+        }
+      ]
+    },
+    {
+      "id": "call_dial_shortcut",
+      "name": "一键拨号",
+      "category": "call",
+      "desc": "手动触发拨打指定号码",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "call_dial",
+          "text": "10086"
+        }
+      ]
+    },
+    {
+      "id": "call_answer_auto",
+      "name": "自动接听",
+      "category": "call",
+      "desc": "收到指定来电时自动接听",
+      "author": "社区",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "call_incoming",
+        "params": {
+          "number": "家人"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "call_answer"
+        }
+      ]
+    },
+    {
+      "id": "call_during_dnd",
+      "name": "来电关勿扰",
+      "category": "call",
+      "desc": "接到来电时关闭免打扰",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "call_incoming",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "dnd_toggle",
+          "text": "off"
+        }
+      ]
+    },
+    {
+      "id": "call_outgoing_log",
+      "name": "拨出电话记录",
+      "category": "call",
+      "desc": "拨出电话时记录号码到日志",
+      "author": "官方",
+      "stars": 45,
+      "lang": "zh",
+      "trigger": {
+        "type": "call_outgoing",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "拨出: {call_number}"
+        }
+      ]
+    },
+    {
+      "id": "sms_auto_forward",
+      "name": "短信转发",
+      "category": "call",
+      "desc": "收到短信时转发到指定号码",
+      "author": "社区",
+      "stars": 167,
+      "lang": "zh",
+      "trigger": {
+        "type": "sms_received",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "sms_send",
+          "text": "13800138000",
+          "text2": "{sms_number}: {sms_message}"
+        }
+      ]
+    },
+    {
+      "id": "sms_sent_log",
+      "name": "短信发送记录",
+      "category": "call",
+      "desc": "发送短信时记录内容",
+      "author": "官方",
+      "stars": 38,
+      "lang": "zh",
+      "trigger": {
+        "type": "sms_sent",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "发出短信: {sms_message}"
+        }
+      ]
+    },
+    {
+      "id": "media_headset_pause",
+      "name": "拔耳机暂停",
+      "category": "media",
+      "desc": "拔出耳机时自动暂停音乐",
+      "author": "官方",
+      "stars": 312,
+      "lang": "zh",
+      "trigger": {
+        "type": "headset",
+        "params": {
+          "plugged": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_pause"
+        }
+      ]
+    },
+    {
+      "id": "media_headset_play",
+      "name": "插耳机播放",
+      "category": "media",
+      "desc": "插入耳机时自动播放音乐",
+      "author": "官方",
+      "stars": 234,
+      "lang": "zh",
+      "trigger": {
+        "type": "headset",
+        "params": {
+          "plugged": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_play"
+        }
+      ]
+    },
+    {
+      "id": "media_volume_dnd",
+      "name": "音量键静音",
+      "category": "media",
+      "desc": "音量被调到 0 时开启勿扰",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "volume_changed",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "dnd_toggle",
+          "text": "on"
+        }
+      ]
+    },
+    {
+      "id": "media_track_log",
+      "name": "歌曲切换记录",
+      "category": "media",
+      "desc": "切换歌曲时记录曲名到日志",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "media_track",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "正在播放: {media_title}"
+        }
+      ]
+    },
+    {
+      "id": "media_bluetooth_play",
+      "name": "连蓝牙播放",
+      "category": "media",
+      "desc": "连接蓝牙耳机时自动播放",
+      "author": "官方",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "audio_becoming",
+        "params": {
+          "text": "on"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_play"
+        }
+      ]
+    },
+    {
+      "id": "media_next_shake",
+      "name": "摇一摇切歌",
+      "category": "media",
+      "desc": "摇动手机切换到下一首",
+      "author": "社区",
+      "stars": 187,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 6
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_next"
+        }
+      ]
+    },
+    {
+      "id": "media_prev_shake",
+      "name": "摇一摇上一首",
+      "category": "media",
+      "desc": "摇动手机切换到上一首",
+      "author": "社区",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "shake",
+        "params": {
+          "sensitivity": 6
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "media_prev"
+        }
+      ]
+    },
+    {
+      "id": "media_ringtone_set",
+      "name": "定时换铃声",
+      "category": "media",
+      "desc": "每天早上切换回默认铃声",
+      "author": "官方",
+      "stars": 54,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 8,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "ringtone_set",
+          "text": "default"
+        }
+      ]
+    },
+    {
+      "id": "media_play_sound",
+      "name": "播放提示音",
+      "category": "media",
+      "desc": "手动触发播放系统提示音",
+      "author": "官方",
+      "stars": 34,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "play_sound"
+        }
+      ]
+    },
+    {
+      "id": "media_music_off_screen",
+      "name": "熄屏停音乐伴眠",
+      "category": "media",
+      "desc": "23点后熄屏自动停止音乐",
+      "author": "官方",
+      "stars": 89,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_off",
+        "params": {}
+      },
+      "constraints": [
+        {
+          "type": "time_range",
+          "text": "23:00-06:00"
+        }
+      ],
+      "actions": [
+        {
+          "type": "media_pause"
+        }
+      ]
+    },
+    {
+      "id": "location_arrive_home",
+      "name": "到家提醒",
+      "category": "location",
+      "desc": "进入家里范围时提示并关静音",
+      "author": "社区",
+      "stars": 198,
+      "lang": "zh",
+      "trigger": {
+        "type": "geofence",
+        "params": {
+          "lat": 39.9042,
+          "lon": 116.4074,
+          "radius": 200,
+          "inside": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "volume_ringer",
+          "a": 2
+        },
+        {
+          "type": "toast",
+          "text": "到家了"
+        }
+      ]
+    },
+    {
+      "id": "location_leave_home",
+      "name": "离开家提醒",
+      "category": "location",
+      "desc": "离开家里范围时提醒带东西",
+      "author": "社区",
+      "stars": 156,
+      "lang": "zh",
+      "trigger": {
+        "type": "geofence",
+        "params": {
+          "lat": 39.9042,
+          "lon": 116.4074,
+          "radius": 200,
+          "inside": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "出门了",
+          "text2": "检查是否带好钥匙和钱包"
+        }
+      ]
+    },
+    {
+      "id": "location_gps_off",
+      "name": "GPS关闭提醒",
+      "category": "location",
+      "desc": "GPS 被关闭时提示",
+      "author": "官方",
+      "stars": 67,
+      "lang": "zh",
+      "trigger": {
+        "type": "gps_state",
+        "params": {
+          "enabled": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "toast",
+          "text": "定位已关闭"
+        }
+      ]
+    },
+    {
+      "id": "location_get_shortcut",
+      "name": "获取当前位置",
+      "category": "location",
+      "desc": "手动获取当前经纬度并提示",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "location_get",
+          "text2": "loc"
+        },
+        {
+          "type": "toast",
+          "text": "位置: {v=loc}"
+        }
+      ]
+    },
+    {
+      "id": "location_share",
+      "name": "分享位置",
+      "category": "location",
+      "desc": "手动分享当前位置给好友",
+      "author": "官方",
+      "stars": 54,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "share_location"
+        }
+      ]
+    },
+    {
+      "id": "location_activity_walk",
+      "name": "步行检测",
+      "category": "location",
+      "desc": "检测到在步行时记录步数",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "activity_recog",
+        "params": {
+          "text": "walking"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "正在步行"
+        }
+      ]
+    },
+    {
+      "id": "location_nearby",
+      "name": "距离计算",
+      "category": "location",
+      "desc": "计算与指定地点的距离",
+      "author": "官方",
+      "stars": 45,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "geo_distance",
+          "text": "39.9042",
+          "text2": "116.4074",
+          "text3": "dist"
+        },
+        {
+          "type": "toast",
+          "text": "距离: {v=dist} 米"
+        }
+      ]
+    },
+    {
+      "id": "location_weather",
+      "name": "天气查询",
+      "category": "location",
+      "desc": "手动查询当前天气并提示",
+      "author": "官方",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "weather_get",
+          "text2": "wx"
+        },
+        {
+          "type": "toast",
+          "text": "天气: {v=wx}"
+        }
+      ]
+    },
+    {
+      "id": "system_dark_theme",
+      "name": "深色模式记录",
+      "category": "system",
+      "desc": "深色模式切换时记录",
+      "author": "官方",
+      "stars": 45,
+      "lang": "zh",
+      "trigger": {
+        "type": "dark_theme_chg",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "深色模式: {dark}"
+        }
+      ]
+    },
+    {
+      "id": "system_brightness_night",
+      "name": "夜间自动调光",
+      "category": "system",
+      "desc": "每天 21:00 把亮度调到 25%",
+      "author": "官方",
+      "stars": 234,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 21,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 25
+        }
+      ]
+    },
+    {
+      "id": "system_brightness_day",
+      "name": "白天自动调光",
+      "category": "system",
+      "desc": "每天 8:00 把亮度调到 80%",
+      "author": "官方",
+      "stars": 198,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 8,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 80
+        }
+      ]
+    },
+    {
+      "id": "system_rotate_lock",
+      "name": "锁定旋转记录",
+      "category": "system",
+      "desc": "屏幕旋转锁定状态变化时记录",
+      "author": "官方",
+      "stars": 34,
+      "lang": "zh",
+      "trigger": {
+        "type": "rotation_lock",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "旋转锁: {rotation}"
+        }
+      ]
+    },
+    {
+      "id": "system_sync_off",
+      "name": "夜间关闭同步",
+      "category": "system",
+      "desc": "23 点关闭自动同步省电",
+      "author": "官方",
+      "stars": 87,
+      "lang": "zh",
+      "trigger": {
+        "type": "time_daily",
+        "params": {
+          "hour": 23,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "sync_toggle",
+          "text": "off"
+        }
+      ]
+    },
+    {
+      "id": "system_nfc_off",
+      "name": "熄屏关NFC",
+      "category": "system",
+      "desc": "屏幕熄灭时关闭 NFC 防止误读",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "screen_off",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "nfc_toggle",
+          "text": "off"
+        }
+      ]
+    },
+    {
+      "id": "system_timeout_set",
+      "name": "设置息屏时间",
+      "category": "system",
+      "desc": "手动把息屏时间设为 30 秒",
+      "author": "官方",
+      "stars": 45,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "screen_timeout",
+          "a": 30000
+        }
+      ]
+    },
+    {
+      "id": "system_language",
+      "name": "语言切换",
+      "category": "system",
+      "desc": "手动切换系统语言",
+      "author": "官方",
+      "stars": 32,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "language_set",
+          "text": "zh-CN"
+        }
+      ]
+    },
+    {
+      "id": "system_low_memory",
+      "name": "内存不足提醒",
+      "category": "system",
+      "desc": "系统内存不足时提示清理后台",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "low_memory",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "内存不足",
+          "text2": "建议清理后台应用"
+        }
+      ]
+    },
+    {
+      "id": "system_reboot",
+      "name": "定时重启",
+      "category": "system",
+      "desc": "每周日凌晨 4 点重启设备（需 Root）",
+      "author": "官方",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "day_of_week",
+        "params": {
+          "days": 0,
+          "hour": 4,
+          "minute": 0
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "reboot"
+        }
+      ]
+    },
+    {
+      "id": "device_light_dim",
+      "name": "光线暗时调光",
+      "category": "device",
+      "desc": "环境光线很暗时自动降低亮度",
+      "author": "官方",
+      "stars": 187,
+      "lang": "zh",
+      "trigger": {
+        "type": "light_sensor",
+        "params": {
+          "lux": 20,
+          "above": false
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 25
+        }
+      ]
+    },
+    {
+      "id": "device_light_bright",
+      "name": "光线亮时调亮",
+      "category": "device",
+      "desc": "环境光线变亮时提高屏幕亮度",
+      "author": "官方",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "light_sensor",
+        "params": {
+          "lux": 500,
+          "above": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "brightness",
+          "b": 90
+        }
+      ]
+    },
+    {
+      "id": "device_proximity_off",
+      "name": "遮挡熄屏",
+      "category": "device",
+      "desc": "距离传感器被遮挡时关闭屏幕",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "proximity",
+        "params": {
+          "near": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "screen_off"
+        }
+      ]
+    },
+    {
+      "id": "device_fingerprint",
+      "name": "指纹解锁记录",
+      "category": "device",
+      "desc": "指纹验证成功时记录时间",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "fingerprint_auth",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "指纹解锁 {datetime}"
+        }
+      ]
+    },
+    {
+      "id": "device_step_log",
+      "name": "步数记录",
+      "category": "device",
+      "desc": "达到步数目标时提示",
+      "author": "官方",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "step_counter",
+        "params": {
+          "threshold": 10000
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "达成 1 万步",
+          "text2": "运动目标完成"
+        }
+      ]
+    },
+    {
+      "id": "device_heart_rate",
+      "name": "心率过高提醒",
+      "category": "device",
+      "desc": "心率超过 120 时提示注意休息",
+      "author": "官方",
+      "stars": 89,
+      "lang": "zh",
+      "trigger": {
+        "type": "heart_rate",
+        "params": {
+          "threshold": 120,
+          "above": true
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "心率偏高",
+          "text2": "建议休息一下"
+        }
+      ]
+    },
+    {
+      "id": "device_charging_full",
+      "name": "充满自动断电提醒",
+      "category": "device",
+      "desc": "电量充满时提示拔线保护电池",
+      "author": "官方",
+      "stars": 167,
+      "lang": "zh",
+      "trigger": {
+        "type": "charging_full",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "充电完成",
+          "text2": "可以拔掉电源了"
+        }
+      ]
+    },
+    {
+      "id": "device_flashlight",
+      "name": "快捷手电筒",
+      "category": "device",
+      "desc": "手动切换手电筒开关",
+      "author": "官方",
+      "stars": 112,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "torch_toggle"
+        }
+      ]
+    },
+    {
+      "id": "security_fail_login",
+      "name": "登录失败记录",
+      "category": "security",
+      "desc": "PIN 输错时记录并拍照（需相机）",
+      "author": "官方",
+      "stars": 145,
+      "lang": "zh",
+      "trigger": {
+        "type": "failed_login",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "log",
+          "text": "登录失败 {datetime}"
+        }
+      ]
+    },
+    {
+      "id": "security_app_disable",
+      "name": "禁止某应用启动",
+      "category": "security",
+      "desc": "打开指定应用时自动关闭它",
+      "author": "社区",
+      "stars": 189,
+      "lang": "zh",
+      "trigger": {
+        "type": "app_foreground",
+        "params": {
+          "pkg": "com.tencent.tmgp.sgame"
+        }
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "kill_app",
+          "text": "com.tencent.tmgp.sgame"
+        }
+      ]
+    },
+    {
+      "id": "security_sim_change",
+      "name": "SIM卡变化提醒",
+      "category": "security",
+      "desc": "SIM 卡被更换时立即通知",
+      "author": "官方",
+      "stars": 134,
+      "lang": "zh",
+      "trigger": {
+        "type": "sim_change",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "SIM 卡变化",
+          "text2": "检测到 SIM 卡被更换"
+        }
+      ]
+    },
+    {
+      "id": "security_usb_debug",
+      "name": "USB调试提醒",
+      "category": "security",
+      "desc": "USB 设备连接时提示",
+      "author": "官方",
+      "stars": 76,
+      "lang": "zh",
+      "trigger": {
+        "type": "usb_device",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "notify",
+          "text": "USB 已连接",
+          "text2": "注意设备安全"
+        }
+      ]
+    },
+    {
+      "id": "security_screen_lock_delay",
+      "name": "锁屏超时缩短",
+      "category": "security",
+      "desc": "手动把自动锁屏时间设为 15 秒",
+      "author": "官方",
+      "stars": 54,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "screen_timeout",
+          "a": 15000
+        }
+      ]
+    },
+    {
+      "id": "security_auth_required",
+      "name": "敏感操作验证",
+      "category": "security",
+      "desc": "执行敏感动作前要求指纹验证",
+      "author": "官方",
+      "stars": 98,
+      "lang": "zh",
+      "trigger": {
+        "type": "shortcut",
+        "params": {}
+      },
+      "constraints": [],
+      "actions": [
+        {
+          "type": "authenticate"
+        }
+      ]
+    }
+  ]
+}
